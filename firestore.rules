@@ -1,0 +1,141 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+    
+    function isUserActive() {
+      return isAuthenticated() && getUserData().status == 'AKTIF';
+    }
+    
+    function hasRole(role) {
+      return isUserActive() && getUserData().role == role;
+    }
+    
+    function isAdmin() {
+      return hasRole('PENTADBIR_SISTEM');
+    }
+    
+    function isDeptAdmin() {
+      return hasRole('PENTADBIR_JABATAN');
+    }
+    
+    function isApprover() {
+      return hasRole('PELULUS');
+    }
+    
+    function isSecretariat() {
+      return hasRole('URUS_SETIA');
+    }
+    
+    function isStaff() {
+      return hasRole('KAKITANGAN');
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // USERS COLLECTION
+    match /users/{userId} {
+      // Users can read own profile; Admin, Approver, Secretariat, Dept Admin can read users
+      allow read: if isAuthenticated() && (isOwner(userId) || isAdmin() || isApprover() || isSecretariat() || isDeptAdmin());
+      // Only Admin can create or modify roles/status of users; user can update own basic profile (nama, noTelefon, gambarProfil)
+      allow create: if isAdmin() || (isAuthenticated() && isOwner(userId));
+      allow update: if isAdmin() || (
+        isAuthenticated() && isOwner(userId) && 
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'status', 'jabatanId', 'uid', 'emel'])
+      );
+      allow delete: if isAdmin();
+    }
+    
+    // ROOMS COLLECTION
+    match /rooms/{roomId} {
+      // All authenticated active users can view rooms
+      allow read: if isAuthenticated();
+      // Only Admin and Secretariat can manage rooms
+      allow create, update, delete: if isAdmin() || isSecretariat();
+    }
+    
+    // DEPARTMENTS COLLECTION
+    match /departments/{deptId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isAdmin();
+    }
+    
+    // BOOKINGS COLLECTION
+    match /bookings/{bookingId} {
+      // Active users can read their own bookings; Approvers, Secretariat, Admin, and Dept Admin (for dept) can read bookings
+      allow read: if isAuthenticated();
+      
+      // Active users can create bookings for themselves
+      allow create: if isUserActive() && request.resource.data.userId == request.auth.uid;
+      
+      // Users can update their own booking only if status is 'DRAF' or 'MENUNGGU_KELULUSAN' or cancel it
+      // Approver can update status (LULUS, TOLAK, PULANGKAN)
+      // Secretariat can update status for Check-In / Check-Out
+      // Admin has full update access
+      allow update: if isAdmin() || 
+        (isApprover() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvalNotes', 'approvedBy', 'approvedAt', 'updatedAt'])) ||
+        (isSecretariat() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'checkInAt', 'checkOutAt', 'checkedInBy', 'serviceStatus', 'updatedAt'])) ||
+        (isOwner(resource.data.userId) && (
+          resource.data.status in ['DRAF', 'MENUNGGU_KELULUSAN'] ||
+          request.resource.data.status == 'DIBATALKAN'
+        ));
+        
+      allow delete: if isAdmin();
+    }
+    
+    // ROOM SERVICES COLLECTION
+    match /room_services/{serviceId} {
+      allow read: if isAuthenticated();
+      allow create: if isUserActive();
+      allow update: if isAdmin() || isSecretariat() || isOwner(resource.data.requestedBy);
+      allow delete: if isAdmin() || isSecretariat();
+    }
+    
+    // MAINTENANCE COLLECTION
+    match /maintenance/{maintId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isAdmin() || isSecretariat();
+    }
+    
+    // NOTIFICATIONS COLLECTION
+    match /notifications/{notifId} {
+      // Users can only read and update (mark as read) their own notifications
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated() && resource.data.userId == request.auth.uid &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['dibaca', 'readAt']);
+      allow delete: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+    
+    // AUDIT LOGS COLLECTION
+    match /audit_logs/{logId} {
+      // Only Admin can read audit logs
+      allow read: if isAdmin();
+      // Any authenticated user can create an audit entry during valid operations, but NO ONE can update or delete
+      allow create: if isAuthenticated();
+      allow update, delete: if false;
+    }
+    
+    // HOLIDAYS COLLECTION
+    match /holidays/{holidayId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isAdmin();
+    }
+    
+    // SYSTEM SETTINGS COLLECTION
+    match /settings/{settingId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isAdmin();
+    }
+  }
+}

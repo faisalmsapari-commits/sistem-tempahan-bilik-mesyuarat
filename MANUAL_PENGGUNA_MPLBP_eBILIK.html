@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual Pengguna Rasmi - MPLBP e-BILIK</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+      .page-break { page-break-before: always; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased p-4 sm:p-8">
+
+  <!-- Header Action Bar (No Print) -->
+  <div class="max-w-4xl mx-auto mb-6 flex items-center justify-between no-print">
+    <a href="index.html" class="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold rounded-xl shadow-sm inline-flex items-center gap-2">
+      ← Kembali ke Sistem e-BILIK
+    </a>
+    <button onclick="window.print()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-md inline-flex items-center gap-2">
+      🖨️ Cetak / Simpan sebagai PDF
+    </button>
+  </div>
+
+  <!-- Main Manual Container -->
+  <div class="max-w-4xl mx-auto bg-white rounded-3xl border border-slate-200 shadow-xl p-8 sm:p-12 space-y-10">
+
+    <!-- Letterhead & Title Cover -->
+    <div class="text-center border-b-2 border-slate-900 pb-8 space-y-3">
+      <div class="inline-block p-3 bg-blue-900 text-white rounded-2xl mb-2 font-black text-2xl">
+        🏛️ MPLBP e-BILIK
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tight">
+        MANUAL PENGGUNA SISTEM
+      </h1>
+      <p class="text-base font-bold text-blue-900 uppercase">
+        Sistem Pengurusan Tempahan Bilik Mesyuarat Bersepadu Mengikut Jabatan
+      </p>
+      <p class="text-xs text-slate-500 font-semibold">
+        Majlis Perbandaran Langkawi Bandaraya Pelancongan (MPLBP) • Berdasarkan Direktori Rasmi PBT Kedah (2026)
+      </p>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-2">
+      <h2 class="font-extrabold text-slate-900 text-sm uppercase tracking-wider mb-2">📋 Kandungan Manual:</h2>
+      <ol class="list-decimal list-inside space-y-1.5 font-medium text-slate-700">
+        <li><strong>Pengenalan & Objektif Sistem</strong></li>
+        <li><strong>Senarai Jabatan Rasmi MPLBP Mengikut Direktori Pekerja</strong></li>
+        <li><strong>Senarai Bilik Mesyuarat Rasmi & Kapasiti</strong></li>
+        <li><strong>Langkah 1: Log Masuk & Pemilihan Peranan (RBAC)</strong></li>
+        <li><strong>Langkah 2: Semakan Jadual & Penapis Mengikut Jabatan</strong></li>
+        <li><strong>Langkah 3: Permohonan Tempahan Bilik Mengikut Jabatan & Pemohon</strong></li>
+        <li><strong>Langkah 4: Aliran Kerja Kelulusan (Pegawai Pelulus)</strong></li>
+        <li><strong>Langkah 5: Pendaftaran Kehadiran Kod QR (Check-In)</strong></li>
+        <li><strong>Langkah 6: Paparan Kiosk Luar Pintu (Door Display Tablet)</strong></li>
+        <li><strong>Langkah 7: Tindakan Urus Setia & Persediaan Fasiliti</strong></li>
+        <li><strong>Langkah 8: Penjanaan Laporan & Cetakan Slip Rasmi</strong></li>
+      </ol>
+    </div>
+
+    <!-- Section 1 -->
+    <section class="space-y-3">
+      <h2 class="text-lg font-black text-blue-900 border-b pb-2 flex items-center gap-2">
+        <span>1.</span> Pengenalan & Objektif Sistem
+      </h2>
+      <p class="text-xs leading-relaxed text-slate-700">
+        Sistem <strong>MPLBP e-BILIK</strong> dibangunkan khusus untuk menyelaraskan tempahan bilik mesyuarat merentasi semua jabatan dan bahagian di Majlis Perbandaran Langkawi Bandaraya Pelancongan. Sistem ini membolehkan warga kerja menempah bilik mesyuarat mengikut jabatan masing-masing, mengesahkan kehadiran melalui kod QR, serta memaparkan status ketersediaan bilik secara langsung.
+      </p>
+    </section>
+
+    <!-- Section 2: Official Departments matching Directory -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-black text-blue-900 border-b pb-2 flex items-center gap-2">
+        <span>2.</span> Senarai Jabatan & Bahagian Rasmi MPLBP
+      </h2>
+      <p class="text-xs text-slate-600">Diselaraskan tepat mengikut portal rasmi Direktori Pekerja MPLBP (<a href="https://pbt.kedah.gov.my/index.php/direktori-pekerja-mplbp/" target="_blank" class="text-blue-600 underline">pbt.kedah.gov.my</a>):</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div class="p-3 bg-slate-50 rounded-xl border space-y-1">
+          <p class="font-bold text-blue-950">1. Pejabat Yang Dipertua (PYDP)</p>
+          <p class="text-slate-500 text-[11px]">Pejabat YDP, Pejabat Setiausaha Perbandaran, Komunikasi Korporat, Integriti</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border space-y-1">
+          <p class="font-bold text-blue-950">2. Jabatan Khidmat Pengurusan (JKP)</p>
+          <p class="text-slate-500 text-[11px]">Pentadbiran & Sumber Manusia, Bahagian Pengurusan Teknologi Maklumat (BPTM), Aset</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border space-y-1">
+          <p class="font-bold text-blue-950">3. Jabatan Perbendaharaan (JPB)</p>
+          <p class="text-slate-500 text-[11px]">Akaun & Kewangan, Hasil, Taksiran & Kutipan, Belanjawan</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border space-y-1">
+          <p class="font-bold text-blue-950">4. Jabatan Penilaian Dan Pengurusan Harta (JPPH)</p>
+          <p class="text-slate-500 text-[11px]">Penilaian Cukai Taksiran, Pengurusan Harta & Sewaan, Penyelidikan Harta</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border space-y-1">
+          <p class="font-bold text-blue-950">5. Jabatan Perancangan Pembangunan dan Landskap (JPPL)</p>
+          <p class="text-slate-500 text-[11px]">Perancangan Pembangunan, Landskap dan Rekreasi, GIS</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border space-y-1">
+          <p class="font-bold text-blue-950">6. Jabatan Kejuruteraan (JKEJ)</p>
+          <p class="text-slate-500 text-[11px]">Infrastruktur & Cerun, Projek & Saliran, Elektrik & Mekanikal, Bengkel</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border space-y-1">
+          <p class="font-bold text-blue-950">7. Jabatan Kawalan Bangunan (JKB)</p>
+          <p class="text-slate-500 text-[11px]">Pelan Bangunan, Pemeriksaan Tapak & CCC, Penguatkuasaan Bangunan</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border space-y-1">
+          <p class="font-bold text-blue-950">8. Jabatan Kesihatan Persekitaran (JKP-KES)</p>
+          <p class="text-slate-500 text-[11px]">Kesihatan Awam & Vektor, Pelesenan Perniagaan, Inspektorat Kebersihan</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border space-y-1">
+          <p class="font-bold text-blue-950">9. Jabatan Penguatkuasaan (JPEN)</p>
+          <p class="text-slate-500 text-[11px]">Operasi Penguatkuasaan, Kawalan Trafik & Parkir, Pendakwaan Kompaun</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border space-y-1">
+          <p class="font-bold text-blue-950">10. Unit Pusat Setempat (OSC)</p>
+          <p class="text-slate-500 text-[11px]">Urus Setia Pusat Setempat (OSC 3.0 Plus), Kaunter Permohonan Pelan</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border space-y-1">
+          <p class="font-bold text-blue-950">11. Unit Audit Dalam (U-AUD)</p>
+          <p class="text-slate-500 text-[11px]">Pengauditan Pengurusan Kewangan, Tadbir Urus & Prestasi</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border space-y-1">
+          <p class="font-bold text-blue-950">12. Unit Undang-Undang (U-UU)</p>
+          <p class="text-slate-500 text-[11px]">Guaman, Kontrak, Pendakwaan & Penggubalan Undang-Undang Kecil (UUK)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Official Rooms -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-black text-blue-900 border-b pb-2 flex items-center gap-2">
+        <span>3.</span> Senarai Bilik Mesyuarat Rasmi & Had Kapasiti
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="border rounded-2xl overflow-hidden shadow-xs bg-white">
+          <img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=600&auto=format&fit=crop&q=80" alt="Bilik Mesyuarat Utama Che' Nang" class="w-full h-32 object-cover">
+          <div class="p-3 text-xs space-y-1">
+            <span class="px-2 py-0.5 bg-blue-50 text-blue-800 font-mono font-bold rounded text-[10px]">BM-CNG-01</span>
+            <h3 class="font-black text-slate-900">Bilik Mesyuarat Utama Che' Nang</h3>
+            <p class="text-emerald-700 font-bold">Kapasiti: 40 Orang (Pax)</p>
+            <p class="text-slate-500 text-[11px]">Aras 3 (Sayap Utama) • Persidangan Video HD & PA System</p>
+          </div>
+        </div>
+
+        <div class="border rounded-2xl overflow-hidden shadow-xs bg-white">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&auto=format&fit=crop&q=80" alt="Bilik Perbincangan Rebak" class="w-full h-32 object-cover">
+          <div class="p-3 text-xs space-y-1">
+            <span class="px-2 py-0.5 bg-teal-50 text-teal-800 font-mono font-bold rounded text-[10px]">BP-RBK-02</span>
+            <h3 class="font-black text-slate-900">Bilik Perbincangan Rebak</h3>
+            <p class="text-emerald-700 font-bold">Kapasiti: 12 Orang (Pax)</p>
+            <p class="text-slate-500 text-[11px]">Aras 2 • Projektor HD & Smart Board</p>
+          </div>
+        </div>
+
+        <div class="border rounded-2xl overflow-hidden shadow-xs bg-white">
+          <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600&auto=format&fit=crop&q=80" alt="Bilik Perbincangan OSC" class="w-full h-32 object-cover">
+          <div class="p-3 text-xs space-y-1">
+            <span class="px-2 py-0.5 bg-amber-50 text-amber-800 font-mono font-bold rounded text-[10px]">BP-OSC-03</span>
+            <h3 class="font-black text-slate-900">Bilik Perbincangan OSC</h3>
+            <p class="text-emerald-700 font-bold">Kapasiti: 10 Orang (Pax)</p>
+            <p class="text-slate-500 text-[11px]">Aras 1 (Pusat Setempat) • Skrin Smart TV 75"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 1 to 8 -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-black text-blue-900 border-b pb-2 flex items-center gap-2">
+        <span>4.</span> Panduan Langkah Demi Langkah Penggunaan
+      </h2>
+      <div class="space-y-3 text-xs">
+        <div class="p-4 bg-slate-50 rounded-2xl border">
+          <h4 class="font-bold text-slate-900">Langkah 1: Log Masuk & Pemilihan Peranan</h4>
+          <p class="text-slate-600 mt-1">Log masuk menggunakan ID rasmi atau gunakan penukar peranan untuk menguji mod Pentadbir Sistem, Pegawai Pelulus, Urus Setia, Pentadbir Jabatan, atau Kakitangan.</p>
+        </div>
+        <div class="p-4 bg-slate-50 rounded-2xl border">
+          <h4 class="font-bold text-slate-900">Langkah 2: Semakan Kalendar & Penapis Mengikut Jabatan</h4>
+          <p class="text-slate-600 mt-1">Pilih dropdown jabatan untuk melihat senarai jadual mesyuarat bagi jabatan tertentu.</p>
+        </div>
+        <div class="p-4 bg-slate-50 rounded-2xl border">
+          <h4 class="font-bold text-slate-900">Langkah 3: Permohonan Tempahan Bilik Baharu (+ TEMPAH BILIK)</h4>
+          <p class="text-slate-600 mt-1">Lengkapkan borang dengan memilih Jabatan Pemohon, Bahagian/Unit, Nama Pegawai Pemohon, Bilik, Bilangan Peserta, Tarikh & Masa, serta Pengerusi.</p>
+        </div>
+        <div class="p-4 bg-slate-50 rounded-2xl border">
+          <h4 class="font-bold text-slate-900">Langkah 4: Kelulusan oleh Pegawai Pelulus</h4>
+          <p class="text-slate-600 mt-1">Pegawai Pelulus meneliti permohonan dan menekan "Luluskan" atau "Tolak" berserta ulasan.</p>
+        </div>
+        <div class="p-4 bg-slate-50 rounded-2xl border">
+          <h4 class="font-bold text-slate-900">Langkah 5: Pendaftaran Kehadiran Kod QR & Kiosk Luar Pintu</h4>
+          <p class="text-slate-600 mt-1">Imbas kod QR pas digital semasa tiba di bilik mesyuarat atau pantau status masa nyata melalui tablet pintu bilik.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Note -->
+    <div class="border-t-2 border-slate-900 pt-6 text-center text-xs text-slate-500 space-y-1">
+      <p class="font-bold text-slate-800">Majlis Perbandaran Langkawi Bandaraya Pelancongan</p>
+      <p>Kompleks Pejabat MPLBP, Persiaran Putra, 07000 Kuah, Langkawi, Kedah Darul Aman</p>
+      <p class="text-[10px] text-slate-400 font-mono">Dokumen Hak Cipta Terpelihara MPLBP e-BILIK © 2026</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
