@@ -3,11 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="MPLBP e-BILIK - Sistem Pengurusan Tempahan Bilik Mesyuarat Bersepadu Majlis Perbandaran Langkawi Bandaraya Pelancongan" />
-    <meta name="theme-color" content="#1e3a8a" />
-    
     <title>MPLBP e-BILIK | Sistem Pengurusan Tempahan Bilik Mesyuarat</title>
-
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,55 +41,22 @@
         }
       }
     </script>
-
-    <!-- Fallback Core CSS in case Tailwind CDN is delayed or offline in file:/// -->
     <style>
-      body { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; margin: 0; background-color: #f8fafc; color: #1e293b; }
-      .spinner { border: 4px solid #e2e8f0; border-top: 4px solid #1e3a8a; border-radius: 50%; width: 44px; height: 44px; animation: spin 1s linear infinite; margin: 0 auto; }
+      body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; margin: 0; background-color: #0f172a; }
       @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
   </head>
-  <body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen">
+  <body class="bg-slate-900 text-slate-800 antialiased min-h-screen">
     
-    <!-- Mount Point -->
     <div id="root">
-      <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center;">
-        <div class="spinner"></div>
-        <h2 style="margin-top: 18px; font-size: 18px; font-weight: 800; color: #0f172a;">Memuatkan Sistem MPLBP e-BILIK...</h2>
-        <p style="font-size: 12px; color: #64748b; margin-top: 4px;">Majlis Perbandaran Langkawi Bandaraya Pelancongan</p>
+      <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-family: sans-serif; text-align: center; padding: 20px;">
+        <div style="width: 48px; height: 48px; border: 4px solid rgba(255,255,255,0.2); border-top: 4px solid #38bdf8; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px;"></div>
+        <h2 style="font-size: 22px; font-weight: 800; margin: 0; letter-spacing: -0.5px;">🏛️ MPLBP e-BILIK</h2>
+        <p style="font-size: 13px; color: #94a3b8; margin-top: 6px;">Sistem Pengurusan Tempahan Bilik Mesyuarat</p>
       </div>
     </div>
 
-    <!-- 1. Local Vendor React & ReactDOM (Guaranteed to work in file:/// without internet/CORS issues) -->
-    <script src="vendor/react.production.min.js"></script>
-    <script src="vendor/react-dom.production.min.js"></script>
-
-    <!-- 2. CDN Fallback in case local vendor is not found -->
-    <script>
-      if (typeof React === 'undefined') {
-        document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"><\/script>');
-      }
-      if (typeof ReactDOM === 'undefined') {
-        document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"><\/script>');
-      }
-    </script>
-
-    <!-- 3. Application Script Bundle -->
+    <!-- Standalone Self-Contained Bundle (Includes React 18, ReactDOM 18 & Full App) -->
     <script src="app.bundle.js"></script>
-
-    <!-- Error Diagnostic Script if bundle fails to load -->
-    <script>
-      window.addEventListener('error', function(e) {
-        console.error('Diagnostic error captured:', e);
-        var rootEl = document.getElementById('root');
-        if (rootEl && !window._MPLBP_APP_MOUNTED) {
-          rootEl.innerHTML = '<div style="max-width: 500px; margin: 60px auto; padding: 24px; background: white; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; font-family: sans-serif;">' +
-            '<h2 style="color: #1e3a8a; font-size: 20px; font-weight: 800; margin-bottom: 8px;">🏛️ MPLBP e-BILIK</h2>' +
-            '<p style="color: #64748b; font-size: 13px; margin-bottom: 20px;">Sistem sedang sedia. Anda juga boleh membuka pelayan setempat di:</p>' +
-            '<a href="http://localhost:3000" style="display: inline-block; padding: 12px 24px; background: #1e3a8a; color: white; text-decoration: none; font-weight: bold; border-radius: 12px; font-size: 14px;">Buka http://localhost:3000</a>' +
-          '</div>';
-        }
-      });
-    </script>
   </body>
 </html>
